@@ -1,4 +1,4 @@
-package work20220207;
+package work202207.work20220207;
 
 import java.util.Arrays;
 
@@ -138,5 +138,17 @@ public class Solution {
             new_nums[(k+i)%nums.length-1]=nums[i];
         }
         System.out.println(Arrays.toString(new_nums));
+    }
+
+
+    public int maxSubArray(int[] nums) {
+        int res = nums[0];
+        for(int i =1;i<nums.length;i++){
+            if(nums[i-1]>0){
+                nums[i]+=nums[i-1];
+            }
+            res = Math.max(res,nums[i]);
+        }
+        return res;
     }
 }

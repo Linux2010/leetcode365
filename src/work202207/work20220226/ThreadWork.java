@@ -1,4 +1,4 @@
-package work20220226;
+package work202207.work20220226;
 
 public class ThreadWork implements Runnable {
 
