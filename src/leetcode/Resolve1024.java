@@ -111,8 +111,8 @@ public class Resolve1024 {
 
     public static void main(String[] args) throws Exception {
 
-        int[] nums = {32, 9, 31, 9, 2, 30, 32, 2, 0, 2, 2 }; //在这里填写你拥有的数字牌
-        String[] ops = {">>", "*", "&", "|"};// 在这里填写你拥有的运算符牌
+        int[] nums = {24,27, 2, 2}; //在这里填写你拥有的数字牌
+        String[] ops = {"**","<<",">>",">>", "^","*","^"};// 在这里填写你拥有的运算符牌
 
         Set<String> allOps = new HashSet<>(Arrays.asList("+", "-", "*", "**", "%", "//", "|", "&", "^", "<<", ">>"));
         Set<String> myOpSet = new HashSet<>(Arrays.asList(ops));

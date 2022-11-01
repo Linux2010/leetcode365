@@ -23,4 +23,17 @@ public class Solution {
         return null;
     }
 
+    //补数方案 优化版本
+    public int[] twoSum2(int[] nums, int target) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if(map.containsKey(nums[i])){
+                return new int[]{map.get(nums[i]),i};
+            }
+            //用补数作为key
+            map.put(target - nums[i],i);
+        }
+        return null;
+    }
+
 }
