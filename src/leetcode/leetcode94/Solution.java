@@ -46,5 +46,21 @@ public class Solution {
         }
         return list;
     }
+    //2022-11-10 ，递归方法加强联系
+    public List<Integer> inorderTraversal_deep2(TreeNode root) {
+        ArrayList<Integer> list = new ArrayList<>();
+        deep2(list,root);
+        return list;
+    }
+    private void deep2(List<Integer> list , TreeNode node){
+        if(node ==null){
+            return;
+        }
+        deep2(list,node.left);
+        list.add(node.val);
+        deep2(list,node.right);
+    }
+
+
 
 }
