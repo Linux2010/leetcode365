@@ -14,36 +14,43 @@ public class Solution {
     //2，先拿到数字
     //
     public int myAtoi(String s) {
-        int res=0;
-        int len = s.length();
-        int sign = 1;
-        int i = 0;
-        int max =Integer.MAX_VALUE/10;
-        int min = Integer.MIN_VALUE/10;
-        while (i<len&&s.charAt(i)==' '){
-            i++;
-        }
-        if (i==len) return res;
-        if(s.charAt(i)=='-'){
-            sign=-1;
-            i++;
-        } else if (s.charAt(i)=='+') {
-            i++;
-        }
-        for (; i < len; i++) {
-            if(s.charAt(i)<='9'&&s.charAt(i)>='0'){
-                res=res*10 + Character.getNumericValue(s.charAt(i)) ;
-                if(res>max&&sign==1) return Integer.MAX_VALUE;
-                else if (-res<min&&sign==-1) return Integer.MIN_VALUE;
-            }else {
-                break;
+        String s_trim = s.trim();
+        String[] arr = s_trim.split(" ");
+
+        int len = arr[0].length();
+        //11,10
+        if(len<10){
+            try {
+                return Integer.parseInt(arr[0]);
+            }catch (Exception e){
+                return 0;
             }
         }
-        return res*sign;
+        char c = arr[0].charAt(0);
+        //10
+        //10 - +
+
+        if(len==10&&Character.isDigit(c)){
+            try {
+                return Integer.parseInt(arr[0]);
+            }catch (Exception e){
+                return Integer.MAX_VALUE;
+            }
+        }else {
+            try {
+                return Integer.parseInt(arr[0]);
+            }catch (Exception e){
+                return 0;
+            }
+        }
+
     }
 
     public static void main(String[] args) {
-        System.out.println(new Solution().myAtoi("2147483649"));
+        System.out.println(Integer.MAX_VALUE);
+        System.out.println(Integer.MIN_VALUE);
+        System.out.println(Integer.valueOf("+123"));
+        System.out.println(new Solution().myAtoi("-91283472332"));
     }
 
 
