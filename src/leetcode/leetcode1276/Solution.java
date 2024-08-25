@@ -13,7 +13,6 @@ public class Solution {
     public List<Integer> numOfBurgers(int tomatoSlices, int cheeseSlices) {
         List<Integer> list = new ArrayList<>();
         int double_y= 4* cheeseSlices - tomatoSlices;
-        //if(tomatoSlices==0&&cheeseSlices==0)
         if(double_y/2>=0&&double_y%2==0&&cheeseSlices>=double_y/2){
             list.add(cheeseSlices-double_y/2);
             list.add(double_y/2);
