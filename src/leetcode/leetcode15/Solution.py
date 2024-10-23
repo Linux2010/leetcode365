@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         nums.sort()
@@ -31,4 +34,3 @@ class Solution:
                     while k>j and nums[k]==nums[k+1]:
                         k -= 1
         return ans
-
