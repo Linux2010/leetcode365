@@ -1,6 +1,8 @@
 package leetcode.leetcode8;
 
 import java.util.HashSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 //https://leetcode.cn/problems/string-to-integer-atoi/
 //8. 字符串转换整数 (atoi)
@@ -47,11 +49,74 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(Integer.MAX_VALUE);
-        System.out.println(Integer.MIN_VALUE);
-        System.out.println(Integer.valueOf("+123"));
-        System.out.println(new Solution().myAtoi("-91283472332"));
+        System.out.println(new Solution().myAtoi_2("    a111sa11111111111111337c0d3"));
     }
+
+
+    public int myAtoi_1(String s) {
+        int n =  s.length();
+        int res =0;
+        int f = 1;
+        int end = 0;
+        int start =0;
+        boolean open = false;
+        for (int i = 0; i < n; i++) {
+            char c = s.charAt(i);
+            if(c == '-') f = -1;
+            if(!open&&!Character.isDigit(c)){
+                break;
+            }
+            if(Character.isDigit(c)&& !open){
+                start = i;
+                end = i;
+                open = true;
+            }
+            if(Character.isDigit(c)&& open){
+                end = i;
+            }
+            if(!Character.isDigit(c) && open){
+                break;
+            }
+        }
+        System.out.printf("start:%s, end:%s%n", start,end);
+        String sub = s.substring(start,end+1);
+        System.out.println(sub);
+        if(sub.isEmpty())return 0;
+        try {
+            res = Integer.parseInt(sub)*f;
+        }catch (NumberFormatException e){
+            if(f==-1){
+                res = Integer.MIN_VALUE;
+            }else {
+                res = Integer.MAX_VALUE;
+            }
+        }
+        return res;
+    }
+
+    public int myAtoi_2(String s) {
+        String regex = "^\\s*(\\d+|-\\d+)"; // 正则表达式
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(s);
+        int res = 0;
+        if(matcher.find()){
+            String sub = matcher.group(1); // 提取捕获组
+            System.out.println(sub);
+            try {
+                res = Integer.parseInt(sub);
+            }catch (Exception e){
+                if(sub.charAt(0)=='-'){
+                    res = Integer.MIN_VALUE;
+                }else {
+                    res = Integer.MAX_VALUE;
+                }
+            }
+        }
+        return res;
+    }
+
+
+
 
 
 }
